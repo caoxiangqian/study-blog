@@ -1,0 +1,15 @@
+1.calloc,malloc
+区别：两者都是动态分配内存。主要的不同是malloc不初始化分配的内存，已分配的内存中可以是任意的值.calloc初始化已分配的内存为0。次要的不同是calloc返回的是一个数组，而malloc返回的是一个对象。malloc它允许从空间内存池中分配内存, malloc()的参数是一个指定所需字节数的整数.
+例如:P=(int*)malloc(n*sizeof(int));
+colloc与malloc类似,colloc需要两个参数,第一个是需要分配内存的变量的个数, 第二个是每个变量的大小.
+例如:P=(int*)colloc(n,sizeof(int)); 
+例,申请一个字符大小的指针
+char *p=(char *)malloc(sizeof(char)); //当然单个是没有什么意义的申请动态数组或一个结构,如
+char *str=(char *)malloc(sizeof(char)*100); //相当于静态字符数组str[100],但大小可以更改的
+typedef struct pointer
+{ int data; 
+struct pointer *p; 
+} pp; 
+pp *p=(pp *)malloc(sizeof(struct pointer)); //动态申请结构体空间
+
+

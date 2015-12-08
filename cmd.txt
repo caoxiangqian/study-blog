@@ -1,0 +1,4 @@
+cmd
+	chcp 65001		切换为utf-8编码
+	chcp 936		换回默认的GBK
+	chcp 437		美国英语

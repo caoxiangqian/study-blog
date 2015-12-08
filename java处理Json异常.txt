@@ -1,0 +1,14 @@
+(1)json-lib对象转化为json数据抛
+net.sf.json.JSONException: va.lang.reflect.InvocationTargetException异常
+出现了两种情况：
+1.日期格式
+2.hibernate延时加载
+
+解决:日期格式
+private java.util.Date createTime;
+只在字段前声明Date的数据类型可能也会抛异常，在Set,get方法中，有出现Date类型的都把包名加上
+
+解决:hibernate延时加载 设置
+Java代码
+    JsonConfig cfg = new JsonConfig();     
+    cfg.setExcludes(new String[]{"handler","hibernateLazyInitializer"});

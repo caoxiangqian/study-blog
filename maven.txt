@@ -1,0 +1,18 @@
+Maven缺省的本地仓库路径为${user.home}/.m2/repository。 
+可以通过修改${user.home}/.m2/settings.xml配置本地仓库路径 
+Xml代码 
+<settings>   
+	<localRepository>E:\maven\repository</localRepository> 
+</settings>
+
+默认每个用户会都拥有一个本地仓库，如果想让所有用户都使用一个仓库，可以修改Maven安装目录下的setting.xml: 
+${M2_HOME}/conf/setting.xml
+
+
+中国可用
+<mirror>
+	<id>central.maven.org</id>
+	<name>central.maven.org/maven2</name>
+	<url>http://central.maven.org/maven2</url>
+	<mirrorOf>central</mirrorOf>
+</mirror>  
