@@ -1,7 +1,7 @@
 1.在form标签添加属性 enctype="multipart/form-data"
 2.在form标签内添加 <input type="file" name="mf" />    并指定name值
 3.在action内定义以下属性，必须遵守全名规则，前缀是input标签的name的值，并生成set/get方法
-    private File mfFile;    //用于接收文件，必须
+    private File mf;    //用于接收文件，必须
     private String mfFileName;      //用于接收文件名，可选
     private String mfContentType;    //用于接收文件类型，可选
 4.现在就可以从mfFile读取上传的文件了
