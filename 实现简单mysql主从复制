@@ -1,0 +1,25 @@
+配置主服务器
+My.ini增加如下配置
+log-bin=master-bin		开启二进制日志
+log-bin-index=master.bin.index	使用二进制索引
+server-id=1	设置服务器id(唯一)
+
+以服务的形式安装mysql
+Cmd>mysqld --install 服务名 --defaults-file="my文件的路径"
+
+登录root账户
+>mysql -u root –p
+mysql> create user jk;
+添加用户的权限
+mysql> grant replication slave on *.*to jk identified by '密码';
+
+配置从服务器
+My.ini增加如下配置
+server-id=2
+relay-log=slave-relay-log-bin
+relay-log-index=slave-relay-log-bin.index
+
+安装
+
+连接到主服务器
+Mysql> change master tomaster_host=’…’,master_port=3306, master_user=’user’, master_password=’123’;
