@@ -1,0 +1,7 @@
+1.解决乱码
+StandardChartTheme chartTheme = new StandardChartTheme("CN");
+chartTheme.setExtraLargeFont(new Font(null, Font.PLAIN, 15));
+chartTheme.setRegularFont(new Font(null, Font.PLAIN, 15));
+chartTheme.setLargeFont(new Font(null, Font.PLAIN, 15));
+//设置主题，以避免中文乱码
+ChartFactory.setChartTheme(chartTheme);
