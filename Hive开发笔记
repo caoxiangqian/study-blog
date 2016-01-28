@@ -1,0 +1,12 @@
+1.开发hive UDF,UDTF等相关函数时一定要捕获异常，否则会导致job运行失败，并报以下异常
+    Exception in thread "Thread-178" java.lang.RuntimeException: Error while reading from task log url
+    	at org.apache.hadoop.hive.ql.exec.errors.TaskLogProcessor.getStackTraces(TaskLogProcessor.java:240)
+    	at org.apache.hadoop.hive.ql.exec.JobDebugger.showJobFailDebugInfo(JobDebugger.java:227)
+    	at org.apache.hadoop.hive.ql.exec.JobDebugger.run(JobDebugger.java:92)
+    	at java.lang.Thread.run(Thread.java:744)
+    Caused by: java.io.IOException: Server returned HTTP response code: 400 for URL:
+    	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1626)
+    	at java.net.URL.openStream(URL.java:1037)
+    	at org.apache.hadoop.hive.ql.exec.errors.TaskLogProcessor.getStackTraces(TaskLogProcessor.java:192)
+    	... 3 more
+    FAILED: Execution Error, return code 2 from org.apache.hadoop.hive.ql.exec.MapRedTask
