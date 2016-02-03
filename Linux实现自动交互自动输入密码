@@ -1,0 +1,12 @@
+#!/bin/sh
+pwd='123\n';
+expect << !
+spawn sudo
+expect -re ".*password.*"
+send $pwd
+expect eof
+exit
+!
+echo "over `date`";
+exit 0;
+
