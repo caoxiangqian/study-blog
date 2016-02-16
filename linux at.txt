@@ -1,0 +1,4 @@
+#在3分钟后执行a.sh
+at now + 3 minutes
+sh a.sh
+ctrl+d
