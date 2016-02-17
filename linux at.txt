@@ -2,3 +2,6 @@
 at now + 3 minutes
 sh a.sh
 ctrl+d
+
+#shell传递参数时，应为每个参数加引号，以避免产生因参数内函有空格而发生的错误
+
