@@ -107,4 +107,4 @@ Lucene通过一个简单的API提供了强大的功能：
 是指数兼容实现在其他编程语言
 
 
-
+lucene index :  http://blog.csdn.net/forfuture1978/article/details/4711308
