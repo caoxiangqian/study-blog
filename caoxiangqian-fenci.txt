@@ -108,3 +108,4 @@ Lucene通过一个简单的API提供了强大的功能：
 
 
 lucene index :  http://blog.csdn.net/forfuture1978/article/details/4711308
+知网下载器 ：   http://www.wsbio.com/static/detail/2013/6/13/40.html
