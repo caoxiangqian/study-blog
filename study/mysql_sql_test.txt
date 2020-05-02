@@ -1,0 +1,20 @@
+create table my_limit(
+id int primary key auto_increment, 
+grp varchar(64), 
+actv varchar(64), 
+day_max int default 0, 
+week_max int default 0, 
+month_max int default 0, 
+group_max int default 0
+);
+
+insert into my_limit(grp,actv,day_max,week_max,month_max,group_max) values ('group001','actv001',100,1000,5000, 10000);
+
+update my_limit set month_max = month_max + 1 where month_max < 5000;
+
+
+create table dd( 
+    id int primary key not null auto_increment, 
+    name varchar(20), 
+    time timestamp default current_timestamp 
+    );

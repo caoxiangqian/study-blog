@@ -1,0 +1,5 @@
+storm jar storm-demo-0.0.1-SNAPSHOT.jar cxq.demo.wordcount.WordCountTopology
+
+storm jar storm-demo-0.0.1-SNAPSHOT-jar-with-dependencies.jar cxq.demo.wordcount.WordCountTopology
+
+storm-demo-0.0.1-SNAPSHOT-jar-with-dependencies.jar

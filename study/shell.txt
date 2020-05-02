@@ -1,0 +1,68 @@
+
+~/soft/zookeeper/bin/zkServer.sh start
+ssh hadoop@hadoop02 "~/soft/zookeeper/bin/zkServer.sh start"
+
+
+
+
+ssh-copy-id -i ~/.ssh/id_rsa.pub hadoop@hadoop001.cxq
+
+scp -r ~/soft hadoop@hadoop002:~/
+scp -r ~/soft hadoop@hadoop003:~/
+scp -r ~/soft hadoop@hadoop004:~/
+
+scp ~/.bash_profile hadoop@hadoop002.cxq:~/
+
+scp -r ~/soft/zookeeper* hadoop@hadoop002:~/soft/
+
+
+/home/hadoop/soft/zookeeper/bin/zkServer.sh start
+ssh hadoop002 "/home/hadoop/soft/zookeeper/bin/zkServer.sh start"
+ssh hadoop003 "/home/hadoop/soft/zookeeper/bin/zkServer.sh start"
+
+
+scp -r ~/soft/hbase1.2.9 hadoop@hadoop002:~/soft/
+
+
+<property>
+<name>hbase.master.info.port</name>
+<value>60010</value>
+</property>
+
+scp -r ~/soft/storm* hadoop@hadoop002:~/soft/
+
+
+nohup /home/hadoop/soft/storm1.2.2/bin/storm nimbus > /dev/null 2>&1 &
+
+hadoop001-004:
+nohup /home/hadoop/soft/storm1.2.2/bin/storm supervisor > /dev/null 2>&1 &
+
+hadoop001:
+nohup /home/hadoop/soft/storm1.2.2/bin/storm ui > /dev/null 2>&1 &
+
+hadoop001-004, 可不启动:
+nohup /home/hadoop/soft/storm1.2.2/bin/storm logviewer > /dev/null 2>&1 &
+
+
+
+bin/kafka-topics.sh --create --zookeeper hadoop001:2181,hadoop002:2181,hadoop003:2181 --replication-factor 1 --partitions 1 --topic test
+
+bin/kafka-topics.sh --create --zookeeper hadoop001:2181,hadoop002:2181,hadoop003:2181 --replication-factor 1 --partitions 1 --topic orderTopic
+
+bin/kafka-topics.sh --list --zookeeper hadoop001:2181,hadoop002:2181,hadoop003:2181
+
+
+bin/kafka-console-producer.sh --broker-list hadoop001:9092 --topic test
+
+bin/kafka-console-consumer.sh --bootstrap-server hadoop001:9092 --topic test --from-beginning
+
+bin/kafka-console-consumer.sh --bootstrap-server hadoop001:9092 --topic orderTopic --from-beginning
+
+
+nohup soft/kafka_2.11-2.1.0/bin/kafka-server-start.sh soft/kafka_2.11-2.1.0/config/server.properties >> nohup.kafka.log 2>&1 &
+
+soft/kafka_2.11-2.1.0/bin/kafka-server-stop.sh
+
+
+
+pveam download local ubuntu-18.10-standard_18.10-2_amd64.tar.gz

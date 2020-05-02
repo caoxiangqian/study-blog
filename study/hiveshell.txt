@@ -1,0 +1,79 @@
+hive shell
+
+
+create table hotel (
+Name string,CardNo string,Descriot string,CtfTp string,CtfId string,Gender string,Birthday string,Address string,Zip string,Dirty string,District1 string,District2 string,
+District3 string,District4 string,District5 string,District6 string,FirstNm string,LastNm string,Duty string,Mobile string,Tel string,Fax string,EMail string,Nation string,
+Taste string,Education string,Company string,CTel string,CAddress string,CZip string,Family string,Version string,id string
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE;
+
+
+
+LOAD DATA INPATH '/user/hadoop/some_hotel_data/*' OVERWRITE INTO TABLE hotel
+
+
+select Name,CtfId,Gender,Birthday,Address,Dirty,FirstNm,LastNm,Mobile,Tel,EMail,Nation,Taste,Education,Family,id from hotel where CtfId like '%412828%'
+
+./hive -e "select Name,CtfId,Gender,Birthday,Address,Dirty,FirstNm,LastNm,Mobile,Tel,EMail,Nation,Taste,Education,Family,id from hotel where name like '%郭%'";
+
+
+create table log_parquet(
+id string,
+name string,
+address string
+)
+row format delimited fields terminated by '\t'
+stored as parquet ;
+
+
+insert into table log_parquet values('1232456', 'tom', 'America');
+
+
+create table log_parquet_snappy(
+id string,
+name string,
+address string
+)
+row format delimited fields terminated by '\t'
+stored as parquet
+TBLPROPERTIES('parquet.compression'='SNAPPY');
+
+
+insert into table log_parquet_snappy values('1232456', 'tom', 'America');
+
+
+
+
+
+
+
+
+create table log_text(
+id string,
+name string,
+address string
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE;
+
+
+
+LOAD DATA local INPATH '/home/hdfs/test.txt' OVERWRITE INTO TABLE log_text;
+
+
+LOAD DATA INPATH "/user/hdfs/test.txt" INTO TABLE log_text;  
+
+
+
+insert overwrite table log_parquet select * from log_text;
+insert overwrite table log_parquet_snappy select * from log_text;
+
+
+
+

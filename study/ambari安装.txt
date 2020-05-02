@@ -1,0 +1,42 @@
+
+
+http://public-repo-1.hortonworks.com/ambari/centos7/2.x/updates/2.7.0.0/ambari-2.7.0.0-centos7.tar.gz
+
+
+scp /etc/yum.repos.d/ambari.repo hadoop002:/etc/yum.repos.d/
+
+ambari-server setup -j /usr/java/jdk1.8.0_191 --jdbc-driver --jdbc-db mysql
+
+
+createrepo /var/www/html/HDP/centos7/3.0.0.0-1634
+createrepo /var/www/html/HDP-UTILS/centos7/1.1.0.22
+createrepo /var/www/html/ambari/centos7/2.7.0.0-897
+createrepo /var/www/html/HDP-GPL/centos7/3.0.0.0-1634
+
+
+http://hadoop001/ambari/centos7/2.7.0.0-897
+
+http://hadoop001/HDP/centos7/3.0.0.0-1634
+
+http://hadoop001/HDP-UTILS/centos7/1.1.0.22
+
+http://hadoop001/HDP-GPL/centos7/3.0.0.0-1634
+
+
+yum install ambari-server -y
+
+ambari-server setup -j /usr/java/jdk1.8.0_191 --jdbc-driver --jdbc-db mysql
+
+
+
+ambari-server setup --jdbc-db=mysql --jdbc-driver=/usr/share/java/mysql-connector-java.jar
+
+ambari-server setup -j /usr/java/default
+
+/var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql
+
+
+
+CREATE DATABASE `ambari`;
+use ambari;
+source /root/Ambari-DDL-MySQL-CREATE.sql

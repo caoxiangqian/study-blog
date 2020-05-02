@@ -1,0 +1,9 @@
+hadoop
+kill job: 
+hadoop job -kill job_1546345361237_0005
+
+hdfs dfs -text /tmp/mr/mySummaryFile/*
+
+hdfs dfs -ls /tmp/mr/mySummaryFile/
+
+hdfs dfs -get /tmp/mr/mySummaryFile/part-r-00000 wordcount.txt

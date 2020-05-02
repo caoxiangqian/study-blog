@@ -1,0 +1,10 @@
+create 'wordcount', 'cf'
+
+scan 'wordcount'
+
+get 'wordcount', 'world','cf:count'
+
+put 'wordcount', 'abc','cf:count',10
+delete 'wordcount', 'abc','cf'
+
+deleteall 'wordcount', 'abc'
